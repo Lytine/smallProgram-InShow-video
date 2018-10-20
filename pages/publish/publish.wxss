@@ -1,0 +1,160 @@
+/*视频描述样式 */ 
+
+page{
+  background-color: #fff0f5;
+}
+/* .total {
+  background-color: #fff0f5;
+} */
+
+container-total {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.container-left-list {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  /* margin-top: 20rpx; */
+}
+
+.container-left-list-out view {
+  font-size: 35rpx;
+  margin-bottom: 15rpx;
+  width: 450rpx;
+  height: 450rpx;
+  /* text-overflow:ellipsis;  */
+  overflow: hidden;
+  /* white-space:nowrap;  */
+  /* margin-top: 10rpx; */
+}
+
+.container-left-list-in {
+  flex: 0 0 66%;
+  box-sizing: border-box;
+  color: white;
+  padding: 10px;
+  font-size: 28rpx;
+  background-color: #f08080;
+}
+
+/* box-sizing:规定两个并排的边框 */
+
+.video-image {
+  flex: 0 0 32%;
+  box-sizing: border-box;
+  min-height: 300rpx;
+}
+
+.video-image image {
+  width: 313rpx;
+}
+
+.textarea {
+  flex: 0 0 50%;
+  box-sizing: border-box;
+  margin-top: 10px;
+  padding: 10px;
+  width: 90%;
+  color: black;
+  background-color: #ffe4e1;
+  left: 4%;
+  right: 5%;
+}
+
+/* 可选主题区域 */
+
+.page {
+  min-height: 100%;
+  flex: 1;
+  /* background-color: #fbf9fe; */
+  font-size: 32rpx;
+  font-family: -apple-system-font, Helvetica Neue, Helvetica, sans-serif;
+  overflow: hidden;
+  margin-top: 10rpx;
+}
+
+.page__desc {
+  display: none;
+  margin-top: 20rpx;
+  font-size: 26rpx;
+  color: #bbb;
+}
+
+.radio {
+  display: block;
+  margin-bottom: 20rpx;
+}
+
+.section {
+  margin-bottom: 10rpx;
+}
+
+/* .section_gap {
+  padding: 0 30rpx;
+  width:300px;
+  height:200px;
+  resize:none;
+  overflow:auto;
+} */
+
+/* 按钮样式 */
+
+.con-button {
+  color: black;
+  background-color: #f08080;
+  margin-left: 15rpx;
+  border-radius: 98rpx;
+}
+
+.con-button2 {
+  color: black;
+  background-color: #f08080;
+  margin-left: 60rpx;
+  margin-bottom: 10px;
+  border-radius: 98rpx;
+}
+
+.submit-button {
+  /* color: black;
+  background-color: #1aad19;
+  bottom: 0;
+  width: 80%;
+  border-radius: 98rpx; */
+  margin-top:40rpx; 
+  color: black;
+  background-color: #1aad19;
+  /* overflow:hidden;  */
+  /* position: fixed; */
+  /* bottom: 0; */
+  /* left:10%; */
+  width: 80%;
+}
+
+.ChooseTopicContent {
+  width: 350px;
+  height: 600px;
+  border: 1px solid #f00;
+}
+
+.suibian {
+  box-sizing: border-box;
+  color: white;
+  padding: 10px;
+  background-color: #f08080;
+  padding-block-start: 10rpx;
+}
+
+.radio-group {
+  box-sizing: border-box;
+  margin-top: 10px;
+  padding: 10px;
+  width: 100%;
+  color: black;
+  background-color: #ffe4e1;
+}

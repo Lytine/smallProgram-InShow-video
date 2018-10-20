@@ -1,0 +1,4 @@
+<video id="myVideo" class="style-video" src="{{tmpVideoUrl}}" muted="{{true}}" controls="{{false}}" autoplay="{{true}}" loop="{{true}}" enable-progress-gesture="{{false}}" objectFit='{{cover}}'>
+</video>
+
+<cover-image class="cover-import" src="../resource/images/sure.png" style="width:64rpx;height:64rpx;" bindtap="sureVideo"></cover-image>

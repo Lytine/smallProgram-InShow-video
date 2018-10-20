@@ -1,0 +1,89 @@
+ <view class='container-video'>
+    <view class='{{SelClass}} {{isSelectedFans}}' bindtap='doSelectFans'>粉丝</view>
+    <view class='{{SelClass}} {{isSelectedFollows}}' bindtap='doSelectFollows'>关注</view>  
+</view>
+
+<view class='userinfo' >
+<!-- 粉丝页面 -->
+<view hidden='{{myFansFalg}}'>
+    <view class="weui-search-bar">
+   <view class="weui-search-bar__form">
+    <view class="weui-search-bar__box">
+      <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+      <input value="{{key}}"  class="weui-search-bar__input" placeholder="请输入查询内容" 
+       bindblur="mobileInput" />
+    </view>
+  </view>
+    <view class="weui-search-bar__cancel-btn" >
+         <text  bindtap='Submit'>搜索</text>
+     </view>
+</view>
+<block wx:for="{{myFansList}}" wx:for-index="index" >
+        <view class='userinfo1'>
+        <view class='userinfo2'>
+        <image bindtap='showUser' data-userId="{{item.user.id}}" class="one" src='{{item.user.avatarurl}}'></image>
+        <view class='userinfo3'>
+        <label bindtap='showUser' data-userId="{{item.user.id}}" class='nickname'>{{item.user.nickname}}</label>
+        <label class='Introduction' style='margin-top:10rpx;'>省份 : {{item.user.province}}</label>
+        <label class='Introduction'>城市 : {{item.user.city}}</label>
+        </view>
+        <block wx:if="{{item.isFans}}">
+        <view class='Follow'>
+        <image class="imgFollow" src='http://192.168.1.7:8081/image/相互关注.png' ></image>
+        <text class='textFollow'>相互关注</text>
+        </view>
+        </block>
+        <block wx:else>
+        <view class='Follow'>
+        <image bindtap='addFollows' data-Id='{{item.user.id}}'  data-index='{{index}}' class="imgFollowtosmall" src='http://192.168.1.7:8081/image/加关注.png' ></image>
+        <text class='textFollow'>添加关注</text>
+        </view>
+        </block>
+        </view>
+        </view>
+        <view class="line"></view>
+</block>
+</view>
+
+
+<!-- 关注页面 -->
+<view hidden='{{myFollowsFalg}}'>
+    <view class="weui-search-bar">
+   <view class="weui-search-bar__form">
+    <view class="weui-search-bar__box">
+      <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+      <input value="{{key1}}"  class="weui-search-bar__input" placeholder="请输入查询内容" 
+       bindblur="mobileInput1" />
+       <!-- <view class="weui-icon-clear" wx:if="{{wxSearchData.value.length > 0}}" bindtap="wxSearchClear">
+         <icon type="clear" size="14"></icon> 
+      </view>  -->
+    </view>
+  </view>
+    <view class="weui-search-bar__cancel-btn" >
+         <text  bindtap='Submit1'>搜索</text>
+     </view>
+</view>
+
+<block wx:for="{{myFollowsList}}" wx:for-index="index" >
+        <view class='userinfo1'>
+        <view class='userinfo2'>
+        <image bindtap='showUser' data-userId="{{item.id}}" class="one" src='{{item.avatarurl}}'></image>
+        <view class='userinfo3'>
+        <label bindtap='showUser' data-userId="{{item.id}}" class='nickname'>{{item.nickname}}</label>
+        <label class='Introduction' style='margin-top:10rpx;'>省份 : {{item.province}}</label>
+        <label class='Introduction'>城市 : {{item.city}}</label>
+        </view>
+        <block >
+        <view class='Follow'>
+        <image  bindtap='cancelFollows' data-Id='{{item.id}}'  data-index='{{index}} 'class="imgFollowtosmall" src='../resource/images/取消关注.png' ></image>
+        <text bindtap='cancelFollows' data-Id='{{item.id}}'  data-index='{{index}}'class='textFollow'>取消关注</text>
+        </view>
+        </block>
+        </view>
+        </view>
+        <view class="line"></view>
+</block>
+
+
+</view>
+</view>

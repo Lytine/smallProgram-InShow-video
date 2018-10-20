@@ -1,0 +1,60 @@
+<view class="container">
+  <view class="userinfo">
+    <block>
+      <image class="face" src='{{avatarurl}}' bindtap='changFace'></image>
+      <label class='nickname'>{{nickname}}</label>
+    </block>
+    <!-- <view class='selfInfo' style="background:url(../resource/images/bgphoto2.jpg) no-repeat;background-size:100% 100%;">
+      <textarea disabled='true' class='selfinfo'></textarea>
+    </view> -->
+    <view class='selfinfo' style="background:url(../resource/images/cardbg.jpg) no-repeat;background-size:100% 100%;">
+      <label class='userinfo-laber'>ID : {{id}}</label>
+      <label class='userinfo-laber'>国家 : {{country}}</label>
+      <label class='userinfo-laber'>省份 : {{province}}</label>
+      <label class='userinfo-laber'>城市 : {{city}}</label>
+
+    </view>
+
+    <block wx:if="{{!isMe}}">
+      <block wx:if="{{!isFollow}}">
+        <button size='mini' type='primary' class='follow' data-followType='1' bindtap='followMe'>关注我</button>
+      </block>
+      <block wx:if="{{isFollow}}">
+        <button size='mini' type='' class='follow' data-followType='0' bindtap='followMe'>已关注</button>
+      </block>
+    </block>
+
+    <view class='container-row'>
+      <label class='info-items'>{{fansCounts}} 粉丝</label>
+      <label class='info-items'>{{followCounts}} 关注</label>
+      <label class='info-items'>{{receiveLikeCounts}} 获赞</label>
+    </view>
+
+  </view>
+</view>
+<view class="line">
+</view>
+<view class='container-video'>
+  <!-- 发布过的作品 -->
+  <view class='{{videoSelClass}} {{isSelectedWork}}' bindtap='doSelectWork'>作品</view>
+  <!-- 收藏的点赞的视频 -->
+  <view class='{{videoSelClass}} {{isSelectedLike}}' bindtap='doSelectLike'>收藏</view>
+
+</view>
+
+<view class='container-video-list'>
+  <!-- 作品 -->
+  <view hidden='{{myWorkFalg}}'>
+    <block wx:for="{{myVideoList}}">
+      <image src='{{serverUrl}}{{item.coverPath}}' class='videoImage' mode="aspectFill" bindtap='showVideoInfo' data-arrindex='{{index}}'></image>
+    </block>
+  </view>
+
+  <!--收藏 -->
+  <view hidden='{{myLikesFalg}}'>
+    <block wx:for="{{likeVideoList}}">
+      <image src='{{serverUrl}}{{item.coverPath}}' class='videoImage' mode="aspectFill" bindtap='showVideoInfo' data-arrindex='{{index}}'></image>
+    </block>
+  </view>
+
+</view>

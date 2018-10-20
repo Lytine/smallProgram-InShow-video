@@ -1,0 +1,41 @@
+<view class="total"> 
+  
+    <view class="container-total">
+      <view class="container-left-list">
+        <view class="container-left-list-out">
+          <view class='container-left-list-in'>
+            <label class='label'>视频描述:</label>
+            <textarea class='textarea' bindinput="bindinput" placeholder='详情...' name="desc" />
+          </view>
+        </view>
+        <!-- 发布视频的截图 -->
+        <view class="video-image">
+          <image src='{{tmpCoverUrl}}' mode="aspectFit"></image>
+        </view>
+      </view>
+    </view>
+
+    <!-- <view class="ChooseTopicContent"> -->
+    <button class="con-button" size="mini" bindtap='randShowTopic'>可选主题</button>
+<form bindsubmit='upload'>
+ <view class='suibian'>
+    <scroll-view class="page" bindscrolltolower="aaa" style="height:480rpx;" scroll-y="true">
+     
+       
+          <radio-group class="radio-group" bindchange="radioChange" name="descId">
+            <label class="radio">
+              <radio bindtap='radioChoose' checked="true" />老子就是不想选主题
+            </label>
+            <label class="radio" wx:for="{{topicList}}">
+              <radio value="{{item.topic.id}}" checked="{{item.checked}}" id="{{item.topic.id}}" data-src="{{serverUrl}}{{item.topic.coverPath}}" bindtap='radioChoose' data-createTime="{{item.topic.createTime}}" /># {{item.topic.topicName}} #
+            </label>
+          </radio-group>
+       
+    
+    </scroll-view>
+  </view>
+
+  </form>
+  <button class="submit-button" size="default" bindtap='confirm2publish'>确认发布</button>
+</view>
+

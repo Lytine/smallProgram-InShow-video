@@ -1,0 +1,65 @@
+<view class='view3'>
+<view class='view2_5'>
+  <view class='view2'>
+  <image  class="avatar" src='{{coverPath}}'></image>
+  <label class='fontsize'>发布：{{username}}</label> 
+  <label  class='fontsize'>参与：{{participationCounts}}</label>
+  </view>
+  <view class='view1'>
+  <view class='view0'>
+  <label class='text'>主题：</label>
+  <label class='text'>{{topicName}}</label>
+  <label >概述：</label>
+  <label class='viewzhutigaishu'>{{topicDesc}}</label>
+  <image class='kaipaiba' bindtap='kaipai' src='../resource/images/kaipaiba.png'></image>
+  </view>
+  </view>
+  </view>
+</view>
+
+
+<!-- <view class='view3' >
+      <view class='view1'>
+      <image  class="avatar" src='{{coverPath}}'></image>
+      <view class='viewfabuzhe'>
+       <label class='text'>主题：{{topicName}}</label>
+       <label >发布：{{username}}</label>
+       <label >概述：</label>
+       <label class='viewzhutigaishu'>{{topicDesc}}</label>
+      </view>
+      <view class='kai'>
+      <image class='kaipaiba' bindtap='kaipai' src='../resource/images/kaipaiba.png'></image>
+      <label>参与：</label>
+      <label>{{participationCounts}}</label>
+      </view>
+      </view>
+</view> -->
+
+<!-- <scroll-view   Bindscrolltolower="getvedio()">
+  <block wx:for="{{List}}">
+      <view class='row1'>
+      <view>
+      <image class='one' src="{{item.avatarUrl}}"></image>
+      </view>
+      <view><label class='up'>作者：{{item.nickname}}</label></view>
+      </view>
+      <label>视频描述：{{item.videoDesc}}</label>
+      <image class='two' mode='aspectFit' src="{{'http://192.168.1.7:8081'+item.coverPath}}"></image>
+
+  </block>
+</scroll-view> -->
+
+<view wx:for="{{List}}" class="item-container" wx:key="videoListId">
+
+  <view style='width:{{screenWidth}}px;height:210px;' class='back-img'>
+    <image src="{{'http://192.168.1.7:8081'+item.coverPath}}" style='width:{{screenWidth}}px;height:210px;' mode="aspectFit" bindtap='showVideoInfo' data-arrindex='{{index}}'></image>
+  </view>
+
+  <view class="desc">
+    <view class="faceName">
+      <image class='myface' src="{{item.avatarUrl}}"></image>
+      <view class="nickname">{{item.nickname}}</view>
+    </view>
+  </view>
+
+</view>

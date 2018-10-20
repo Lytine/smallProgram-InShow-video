@@ -1,0 +1,14 @@
+
+.style-video {
+  width: 99%;
+  height: 100%;
+  position: absolute;
+}
+
+.cover-import {
+  position: absolute;
+  bottom: 105rpx;
+  right: 135rpx;
+  width: 64px;
+  height: 64px;
+}

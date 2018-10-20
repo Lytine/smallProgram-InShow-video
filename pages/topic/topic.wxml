@@ -1,0 +1,72 @@
+<!-- <view class='view_toptitle'>
+  <a class="title1" bindtap="btn1">默认↓</a>
+  <label>|</label>
+  <a class="title2" bindtap="btn2">热度↓</a>
+  <label bindtap='goupload' class='s'>发布主题</label>
+</view> -->
+
+<view class='view_toptitle'>
+  <a class="tab-nav-item0 ">
+    <a bindtap="goupload">发布</a>
+  </a>
+  <div class="aui-tab-box" data-ydui-tab>
+
+    <ul class="tab-nav">
+
+      <a class="tab-nav-item {{TabActive1}}">
+        <a bindtap="btn1">默认↓</a>
+      </a>
+      <a class="tab-nav-item {{TabActive2}}">
+        <a bindtap="btn2">热度↓</a>
+      </a>
+    </ul>
+  </div>
+</view>
+
+<view class='aui-scrollView'>
+  <view hidden='{{list}}'>
+    <block wx:for="{{ATopicList}}">
+      <view class="aui-list-item">
+        <view class="aui-list-item-hd">
+          <image class="one" src="{{'http://192.168.1.7:8081'+item.topic.coverPath}}"></image>
+        </view>
+        <div class="aui-list-item-bd">
+          <h4>话题：{{item.topic.topicName}}</h4>
+          <p>发布者：{{item.username}}</p>
+          <p>参与：{{item.topic.participationCounts}}</p>
+          <p>描述：{{item.topic.topicDesc}}</p>
+          
+        </div>
+        <view class="aui-list-item-fr ">
+            <image src="../resource/images/enter1.png" mode='scaleToFill' style="width:25px; height:25px;margin-right:15rpx;margin-top:15rpx;" bindtap="showTopic" data-itemnum1="{{item.topic.topicName}}" data-username="{{item.username}}" data-itemnum2="{{item.topic.participationCounts}}" data-itemnum3="{{item.topic.topicDesc}}" data-itemnum4="{{'http://192.168.1.7:8081'+item.topic.coverPath}}" data-itemnum5="{{item.topic.id}}"></image>
+          </view>
+        <!-- <span class="aui-list-item-fr">
+    <img src="images/icon-follow-003.jpg" alt="">
+    <p style="color:#ce0000">加关注</p>
+  </span> -->
+      </view>
+    </block>
+  </view>
+</view>
+<view class='aui-scrollView'>
+  <view hidden='{{hart}}'>
+    <block wx:for="{{HTopicList}}">
+      <view class="aui-list-item">
+        <view class="aui-list-item-hd">
+          <image class="one" src="{{'http://192.168.1.7:8081'+item.topic.coverPath}}" bindtap="showTopic" data-itemnum1="{{item.topic.topicName}}" data-username="{{item.username}}" data-itemnum2="{{item.topic.participationCounts}}" data-itemnum3="{{item.topic.topicDesc}}"
+            data-itemnum4="{{'http://192.168.1.7:8081'+item.topic.coverPath}}" data-itemnum5="{{item.topic.id}}"></image>
+        </view>
+        <div class="aui-list-item-bd">
+          <h4>话题：{{item.topic.topicName}}</h4>
+          <p>发布者：{{item.username}}</p>
+          <p>参与：{{item.topic.participationCounts}}</p>
+          <p>描述：{{item.topic.topicDesc}}</p>
+        </div>
+        <!-- <span class="aui-list-item-fr">
+    <img src="images/icon-follow-003.jpg" alt="">
+    <p style="color:#ce0000">加关注</p>
+  </span> -->
+      </view>
+    </block>
+  </view>
+</view>

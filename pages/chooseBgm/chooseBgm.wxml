@@ -1,0 +1,54 @@
+<!--搜索框部分-->
+<!-- <view class="wxSearch-section" bindtap='sousuo'>
+  <view class="wxSearch-pancel">
+    <input class="wxSearch-input" placeholder="搜索" />
+    <button class="wxSearch-button" size="mini" plain="true">搜索</button>
+  </view>
+</view> -->
+
+<view class="weui-search-bar">
+  <view class="weui-search-bar__form">
+    <view class="weui-search-bar__box">
+      <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+      <input value="{{key}}" class="weui-search-bar__input" placeholder="请输入查询内容" bindblur="inputSearch" />
+    </view>
+  </view>
+  <view class="weui-search-bar__cancel-btn">
+    <text bindtap='bgmSearch'>搜索</text>
+  </view>
+</view>
+
+<!--轮播图-->
+<swiper autoplay>
+  <block wx:for="{{imgUrls}}" wx:key="imgUrlsId">
+    <swiper-item>
+      <image src="{{item}}" class="slide-image" mode="aspectFill" />
+    </swiper-item>
+  </block>
+</swiper>
+
+<!--滚动视图，允许纵向滚动-->
+<scroll-view scroll-y="true" class="container">
+
+  <block wx:for="{{bgmList}}" wx:key="{{bgmListID}}">
+    <!-- 这个view绑定了一个大大的事件 -->
+    <view bindtap='toggleBtn' id="{{item.id}}">
+
+      <audio bindplay='audioplay' bindpause="audiopause" id='{{item.id}}' controls='true' data-choose="{{item.choose}}" data-key="{{item.key}}" name="{{item.name}}" author="{{item.author}}" action="{{audioAction}}" src="{{serverUrl}}{{item.path}}" poster="{{poster}}"
+        chooseCount="{{chooseCount}}" style='width:300px' loop bindtimeupdate="audioPress" loop>
+
+        <view>
+          <progress wx:if="{{showView == item.id}}" percent="{{audioPress}}" stroke-width="2" />
+        </view>
+
+      </audio>
+    </view>
+
+    <view wx:if="{{showView == item.id}}">
+      <button class="button" bindtap='uploadBtn'>确认并开拍</button>
+    </view>
+
+  </block>
+
+
+</scroll-view>
