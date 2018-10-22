@@ -1,45 +1,43 @@
+<view class='home-head white-bgcolor clearfix'>
+  <div class="head-img">
+    <image src="../resource/images/mine.png" style='width:100%;height:400rpx'></image>
+    <div class="head-logo">
+      <image src='{{avatarurl}}' style='width:100%;height:100%'></image>
+    </div>
+    <div class="head-name">{{nickname}}</div>
+  </div>
+  <view class='container-row'>
+      <view class='info-items'>
+      <view>粉丝 </view>
+      <view>{{fansCounts}}</view></view>
+      <view class='info-items'><view>关注 </view>
+      <view>{{followCounts}}</view></view>
+      <view class='info-items'><view>获赞 </view>
+      <view>{{receiveLikeCounts}}</view></view>
+      </view>
+</view>
+<!-- <view class="line">
+</view> -->
+<!-- <view class="line">
+</view> -->
+<view class='container-video'>
+  <!-- 发布过的作品 -->
+  <view class='{{videoSelClass}} {{isSelectedWork}}' bindtap='doSelectWork'>作品</view>
+  <!-- 收藏的点赞的视频 -->
+  <view class='{{videoSelClass}} {{isSelectedLike}}' bindtap='doSelectLike'>收藏</view>
 
-<view class="container" >
-  <view class="userinfo">
-    <block >
-      <image class="face" src='{{avatarurl}}'></image>
-      <label class='nickname'>{{nickname}}</label>
-    </block>
-      <view class='selfinfo' style="background:url(../resource/images/cardbg.jpg) no-repeat;background-size:100% 100%;">
-      <label class='userinfo-laber'>ID : {{id}}</label>
-      <label class='userinfo-laber'>国家 : {{country}}</label>
-      <label class='userinfo-laber'>省份 : {{province}}</label>
-      <label class='userinfo-laber'>城市  : {{city}}</label>
-      
-      </view>
-      <view class='container-row'>
-      <label class='info-items'>{{fansCounts}} 粉丝</label>
-      <label class='info-items'>{{followCounts}} 关注</label>
-      <label class='info-items'>{{receiveLikeCounts}} 获赞</label>
-      </view>
-  </view>
 </view>
-<view class="line">
-</view>
- <view class='container-video'>
-    <!-- 发布过的作品 -->
-    <view class='{{videoSelClass}} {{isSelectedWork}}' bindtap='doSelectWork'>作品</view>
-    <!-- 收藏的点赞的视频 -->
-    <view class='{{videoSelClass}} {{isSelectedLike}}' bindtap='doSelectLike'>收藏</view>
-    
-</view>
-  
+
 <view class='container-video-list'>
-<view hidden='{{myWorkFalg}}'> 
-    <block wx:for="{{myVideoList}}" >
-        <image src='{{serverUrl}}{{item.coverPath}}' class='videoImage' mode="aspectFill" bindtap='showVideoInfo' data-arrindex='{{index}}'></image>
+  <view hidden='{{myWorkFalg}}'>
+    <block wx:for="{{myVideoList}}">
+      <image src='{{serverUrl}}{{item.coverPath}}' class='videoImage' mode="aspectFill" bindtap='showVideoInfo' data-arrindex='{{index}}'></image>
     </block>
-</view>
-<view hidden='{{myLikesFalg}}'>
-    <block wx:for="{{likeVideoList}}" >
-        <image src='{{serverUrl}}{{item.coverPath}}' class='videoImage' mode="aspectFill" bindtap='showVideoInfo' data-arrindex='{{index}}'></image>
+  </view>
+  <view hidden='{{myLikesFalg}}'>
+    <block wx:for="{{likeVideoList}}">
+      <image src='{{serverUrl}}{{item.coverPath}}' class='videoImage' mode="aspectFill" bindtap='showVideoInfo' data-arrindex='{{index}}'></image>
     </block>
+  </view>
+<!-- {{serverUrl}}{{item.coverPath}}   ../resource/images/cardbg.jpg -->
 </view>
-
-</view>
-

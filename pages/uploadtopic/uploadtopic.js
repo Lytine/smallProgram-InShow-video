@@ -1,4 +1,4 @@
-const app = getApp()
+var app = getApp()
 var tempFilePaths="";
 
 Page({ 
@@ -41,7 +41,7 @@ Page({
     }
     var userId = app.globalData.userId;
     var serverUrl = app.serverUrl; 
-
+    console.log("发布话题的ID："+userId);
     wx.uploadFile({
       url: serverUrl + '/topic/uploadtopic',
       filePath: tempFilePaths,
@@ -59,10 +59,11 @@ Page({
           title: '上传成功!~~',
           icon: "success"
         });
+        console.log( app.globalData.userInfo)
         wx.redirectTo({
           url: '../topicdetail/topicdetail?topicName=' + that.data.topicName
-            + '&username=' + that.data.username 
-            + '&participationCounts=' + that.data.participationCounts 
+            + '&username=' + JSON.parse(app.globalData.userInfo).nickName
+            + '&participationCounts=' + "0"
             + '&topicDesc=' + that.data.topicDesc 
             + '&coverPath=' + that.data.coverPath 
             + '&topicId=' + that.data.topicId,

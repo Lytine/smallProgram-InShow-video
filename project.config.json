@@ -14,7 +14,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.3.0",
 	"appid": "wxa35bbd6556297ebd",
-	"projectname": "InShow-video",
+	"projectname": "smallProgram-InShow-video",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},

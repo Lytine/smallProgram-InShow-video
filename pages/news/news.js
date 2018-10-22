@@ -48,8 +48,20 @@ Page({
 
 
 
-  onLoad: function(){
+  onShow: function(){
     var me = this;
+    me.setData({
+      myFansList: [],
+      myFansPage: 0,
+
+      myFollowsList: [],
+      myFollowsPage: 0,
+
+      myFansSearchList: [],
+
+      myFollowsSearchList: [],
+
+    })
     
     me.getmyFansList(0);    
   },

@@ -38,40 +38,37 @@ Page({
     followCounts: 0,
     receiveLikeCounts: 0
   },
+  // onShow: function(){
+  //   this.setData({
+  //     myVideoList: [],
+  //     myVideoPage: 1,
 
-  onLoad: function (params) {
+
+  //     likeVideoList: [],
+  //     likeVideoPage: 1,
+  //   })
+  //   this.onLoad();
+  // },
+  onShow: function (params) {
     var me = this;
     wx.showLoading();
     var user = app.globalData.userInfo;
-    //var user = app.getGlobalUserInfo();
+    me.setData({
+      myVideoList: [],
+      myVideoPage: 1,
+      likeVideoList: [],
+      likeVideoPage: 1,
+    })
 
     var userId = app.globalData.userId;
-    // console.log("..." + JSON.stringify(user));
-    // var userId = app.getGlobalUserId();
-    console.log("+++++++++++++++++++++++++++++++++++++++++++++++++" + userId  + "---");
+
+    console.log("+++++++++++++++++++++++++++++++++++++++++++++++++" + userId + "---");
     var serverUrl = app.serverUrl;
-    // console.log("2++++++++++++++++++++++++++++++++++++" + serverUrl + "--");
-    // me.setData({
-    //         avatarurl: user.avatarUrl,
-    //   city: Turnfile.getname(String(user.city)),
-    //   country: Turnfile.getname(String(user.country)),
-    //         gender: user.gender,
-    //         id: userId,
-    //         nickname: user.nickName,
-    //         province: Turnfile.getname(String(user.province)),
-    //         reportCounts: user.reportCounts,
-    //         username: user.username,
-    //         fansCounts: user.fansCounts,
-    //         followCounts: user.followCounts,
-    //         receiveLikeCounts: user.receiveLikeCounts,
-    //       });
-    //请求个人简介
+
     wx.request({
       url: serverUrl + '/user/query?userId=' + userId,
       method: "POST",
-      // data: {
-      //   userID: '18092868HFHRN4DP'
-      // },
+
       header: {
         'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
@@ -153,22 +150,18 @@ Page({
   //作品
   getMyVideoList: function (page) {
     var me = this;
-    // var user = app.getGlobalUserInfo();
-    // Console.log("作品user："+user);
-    // var user = app.globalData.userInfo;
-    // var userId = app.getGlobalUserId();
+
     var user = app.globalData.userInfo;
-    //var user = app.getGlobalUserInfo();
+
 
     var userId = app.globalData.userId;
-    // console.log("-------------------------"+userId+"++");
+
     var serverUrl = app.serverUrl;
-    // console.log("2-------------------------" + serverUrl + "++");
-    // 查询视频信息
+
     wx.showLoading();
     // 调用后端
     wx.request({
-      //url: serverUrl + '/video/showAll/?page=' + page + '&pageSize=6',
+
       url: serverUrl + '/video/myVideo/?page=' + page + '&userId=' + userId,
       method: "POST",
       header: {
@@ -198,19 +191,14 @@ Page({
 
     var userId = app.globalData.userId;
     var serverUrl = app.serverUrl;
-    // console.log(userId, serverUrl)
-    //查询视频信息
+
     wx.showLoading();
 
     wx.request({
       url: serverUrl + '/video/showMylike/?userId=' + userId + '&page=' + page + '&pageSize=6',
-      // url: 'http://192.168.1.7:8081/video/showMylike',
+
       method: "POST",
-      // data: {
-      //   userId: "18092868HFHRN4DP",
-      //   page: 0,
-      //   pageSize:6
-      // },
+
       header: {
         'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
@@ -235,16 +223,15 @@ Page({
   onReachBottom: function () {
     var myWorkFalg = this.data.myWorkFalg;
     var myLikesFalg = this.data.myLikesFalg;
-    // console.log(this.data);
-    // console.log( myVideoListrows);
+
     if (!myWorkFalg) {
       var currentPage = this.data.myVideoPage;
-      //  var totalPage = this.data.myVideoTotal;
+
       // 获取总页数进行判断，如果当前页数和总页数相等，则不分页
       if (myVideoListrows.length == 0) {
 
         wx.showToast({
-          title: '已经没有视频啦...',
+          title: '已经没有视频啦~~',
           icon: "none"
         });
         return;
@@ -253,11 +240,11 @@ Page({
       this.getMyVideoList(page);
     } else if (!myLikesFalg) {
       var currentPage = this.data.likeVideoPage;
-      // var totalPage = this.data.myLikesTotal;
+
       // 获取总页数进行判断，如果当前页数和总页数相等，则不分页
       if (likeVideoListrows.length == 0) {
         wx.showToast({
-          title: '已经没有视频啦...',
+          title: '已经没有视频啦~~',
           icon: "none"
         });
         return;
@@ -276,21 +263,21 @@ Page({
 
     if (!myWorkFalg) {
       var videoList = this.data.myVideoList;
-      // var videoList = me.data.myVideoList;
+
       var videoInfo = JSON.stringify(videoList[arrindex]);
     } else if (!myLikesFalg) {
       var videoList = this.data.likeVideoList;
-      // var videoList = me.data.likeVideoList;
+
       var videoInfo = JSON.stringify(videoList[arrindex]);
     }
-    // var videoList = me.data.myVideoList;
- 
-    // var videoInfo = JSON.stringify(videoList[arrindex]);
+
+
+
     console.log("视频信息叻" + videoInfo)
     wx.redirectTo({
       url: '../vedioInfo/vedioInfo?videoInfo=' + videoInfo
 
     })
   }
-  
+
 })

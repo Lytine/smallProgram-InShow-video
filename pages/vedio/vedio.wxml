@@ -1,15 +1,5 @@
 <view class="view">
 
-  <!-- <view class="window">
-    <video class="cover-9" src="{{tmpVideoUrl}}" poster="{{tmpCoverUrl}}" wx:if="{{type=='startRecord'}}"></video>
-    <image class="cover-9" src="{{tmpCoverUrl}}" wx:if="{{type=='chooseVideo'}}"></image>
-    <view class="window-2">
-      <button bindtap="open" type="primary" data-type="startRecord">录制视频</button>
-      <button bindtap="open" type="primary" data-type="chooseVideo" bindtap="uploadVideo">本地视频</button>
-    </view>
-  </view> -->
-
-
   <!-- 视频录制 -->
   <camera class="camera" device-position="{{device?'back':'front'}}" wx:if="{{camera}}" flash="off">
     <cover-view class="cover-1" bindtap="camera" >

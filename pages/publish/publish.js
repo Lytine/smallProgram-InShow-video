@@ -1,9 +1,11 @@
 var serverUrl = getApp().serverUrl;
-var userId = getApp().globalData.userId;
- 
+// var userId = getApp().globalData.userId;
+
 Page({
 
   data: {
+    title: "请为视频题个标题吧...",
+    flag: 0,
     topicList: [],
     serverUrl: "",
     desc: "这个是描述", //视频描述
@@ -12,7 +14,7 @@ Page({
     tmpCoverUrl: '../resource/images/like.png', //默认视频封面图
     showBtn: false, //初始化状态的可选按钮不可见
     randDisplayPage: 1, //随机显示可选话题
-
+    ramdomList: [],
     totalPage: 1, //总页数
     page: 1, //当前页
     hasMoreData: true, //加载主题的时候，判断往下是否还有数据
@@ -22,6 +24,7 @@ Page({
 
   onLoad: function (params) {
     var that = this;
+    var userId = getApp().globalData.userId;
     console.log("------------带进来的视频时长--------------" + params.duration)
     console.log("------------视频高度--------------" + params.tmpHeight)
     console.log("------------视频宽度--------------" + params.tmpWidth)
@@ -32,6 +35,7 @@ Page({
     that.setData({
       allParams: params,
       tmpCoverUrl: params.tmpCoverUrl,
+      userId:userId,
     })
 
     wx.showLoading({
@@ -53,7 +57,7 @@ Page({
 
         if (res.data.status == 200) {
           var topicList = res.data.data;
-
+          
           that.setData({
             topicList: topicList,
           });
@@ -89,11 +93,24 @@ Page({
   radioChange: function (e) {
     var me = this;
     var topicId = e.detail.value;
+    for (var i in me.data.topicList){
+      console.log(i)
+      if (e.detail.value === me.data.topicList[i].topic.id)
+        me.setData({
+          title: me.data.topicList[i].topic.topicName,
+        })
+    }
+    console.log(e)
+    console.log(e.target)
     me.setData({
       topicId: topicId,
     })
   },
-
+  radioChoose2: function(){
+    this.setData({
+      title: "选一个小可爱玩玩吧",
+    })
+  },
   //点击radio事件
   radioChoose: function (e) {
     // var me = this;
@@ -127,7 +144,7 @@ Page({
       url: serverUrl + '/video/uploadVideos',
       method: 'POST',
       formData: {
-        userId: userId,
+        userId: me.data.userId,
         audioId: me.data.allParams.audioId,
         desc: me.data.desc,
         topicId: me.data.topicId,
@@ -196,15 +213,16 @@ Page({
     var me = this;
     console.log("----------------" + me.data.topicList.length)
     console.log("----------------" + (me.data.topicList.length) % 10)
-    if ((me.data.topicList.length) % 10 != 0) {
-      console.log("-----你的小可爱return啦------")
+    if ((me.data.topicList.length) % 7 != 0 ) {
+      me.data.page=1
     } else {
       var page = me.data.page + 1; //把下一页 数据刷新下
       me.setData({
         page: me.data.page + 1
       })
-      me.getAllTopicList(page); //再传入需要分页的页数
+      
     }
+    me.getAllTopicList(me.data.page); //再传入需要分页的页数
 
   },
 
@@ -235,13 +253,13 @@ Page({
 
         var topicList = res.data.data;
         var newtopicList = me.data.topicList;
-
         me.setData({
-          topicList: newtopicList.concat(topicList),
+          topicList: topicList,
+          //topicList: topicList,
           page: me.data.page,
           serverUrl: serverUrl
         });
-
+        
       }
     })
   },

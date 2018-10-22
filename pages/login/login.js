@@ -3,8 +3,6 @@ var serverUrl = getApp().serverUrl;
 var app = getApp();
 Page({
   data: {
-    appSecret: "76d8c34dde69c14683bfc7519636900a",
-    appID: "wxa35bbd6556297ebd",
     userInfo: {},
     //判断小程序的API，回调，参数，组件等是否在当前版本可用。
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
@@ -37,8 +35,6 @@ Page({
               data: {
                 js_code: js_code,
                 rawsData: rawd,
-                appID: me.data.appID,
-                appSecret: me.data.appSecret
               },
               header: {
                 'content-type': 'application/x-www-form-urlencoded'

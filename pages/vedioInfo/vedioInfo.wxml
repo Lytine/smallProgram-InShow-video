@@ -1,90 +1,81 @@
-<view style='width:100%;height:100%;'>
+<view style='width:100%;height:100%;' >
 
   <!-- objcetFit：当视频大小于video容器大小不一致的时候，视频选择覆盖 -->
   <!-- src="http://192.168.1.7:8081/18092868HFHRN4DP/video/bb8070d6-7fd5-4916-bc95-aebe8f18b4b1.mp4" -->
   <video id="myVideo" src="{{src}}" muted="{{false}}" controls="{{false}}" autoplay="{{true}}" loop="{{true}}" enable-progress-gesture="{{false}}" style='width:100%;height:100%;' objectFit='{{cover}}' show-center-play-btn="{{true}}">
 
-<cover-view style='height=100%;height=100%'>
-<cover-view class='container'>
-      <!-- 拍摄视频 -->
+    <cover-view style='height=100%;height=100%'>
+      <cover-view class='container'>
+        <!-- 拍摄视频 -->
 
-      <cover-image src='../resource/images/camera.png'style='width:50rpx;height:50rpx;' bindtap='upload'></cover-image>
+        <cover-image src='../resource/images/camera.png' style='width:50rpx;height:50rpx;' bindtap='upload'></cover-image>
 
+        <!-- 搜索按钮 -->
+        <cover-image src='../resource/images/share.png' style='width:45rpx;height:45rpx;' bindtap='vedioShare'></cover-image>
 
-      <!-- 搜索按钮 -->
-      <cover-image src='../resource/images/share.png' style='width:45rpx;height:45rpx;' bindtap='vedioShare'></cover-image>
+      </cover-view>
+      <cover-view class="container-total-left">
+        <cover-view class='container-me'>
+          <!-- 点击头像进入用户详情页 -->
+          <!-- {{serverUrl}}{{publisher.faceImage}} 头像的图片先写死-->
+          <cover-image class="face" src='{{publisher.avatarurl}}' bindtap='showPublisher'></cover-image>
 
+          <!----点赞按钮 -->
+          <block wx:if="{{userClickvideo}}">
+            <cover-image class="size-me" src='../resource/images/点赞.png' style='margin-top:30rpx;' bindtap='ClickVideoOrNot'></cover-image>
+          </block>
+          <block wx:else>
+            <cover-image class="size-me" src='../resource/images/不点赞.png' style='margin-top:30rpx;' bindtap='ClickVideoOrNot'></cover-image>
+          </block>
+          <!-- 评论按钮 -->
+          <cover-image class="size-me" src='../resource/images/comments.png' style='margin-top:30rpx;' bindtap='leaveComment'></cover-image>
+
+          <!-- 收藏按钮 -->
+          <block wx:if="{{userLikevideo}}">
+            <cover-image class="size-me" src='../resource/images/like.png' style='margin-top:30rpx;' bindtap='LikeVideoOrNot'></cover-image>
+          </block>
+          <block wx:else>
+            <cover-image class="size-me" src='../resource/images/unlike.png' style='margin-top:30rpx;' bindtap='LikeVideoOrNot'></cover-image>
+          </block>
+
+        </cover-view>
+        <cover-view class="container-me-stop" bindtap='vedioControl'>
+          <!-- --------------------------------------------------------------- -->
+          <cover-image class="" wx:if="{{cilckStop}}" class="stop" src='../resource/images/暂停.png' style='width:128rpx;height:128rpx;'></cover-image>
+          <!-- --------------------------------------------------------------- -->
+        </cover-view>
+      </cover-view>
+
+      <cover-view class='container1'>
+        <cover-view class='container-words'>
+          <cover-view>@{{publisher.nickname}}</cover-view>
+          <cover-view class='video-desc'>{{videoInfo.videoDesc}}</cover-view>
+          <cover-view class='video-topic' wx:if="{{videoInfo.topicName != null&& videoInfo.topicName != undefined && videoInfo.topicName != ''}}">主题:{{videoInfo.topicName}}</cover-view>
+        </cover-view>
+
+        <cover-view class='container-reports'>
+          <!-- 举报按钮 -->
+          <cover-image class='' src='http://192.168.1.7:8081/image/reportaa.png' class="size-bottom" bindtap='report'></cover-image>
+        </cover-view>
+      </cover-view>
+
+      <cover-view class='container-bottom'>
+        <!-- 首页按钮 -->
+        <cover-image class='' src='../resource/images/index.png' class="size-bottom" bindtap='showIndex'></cover-image>
+
+        <!-- 我的按钮 -->
+        <cover-image class='' src='../resource/images/mine.png' class="size-bottom" bindtap='showMine'></cover-image>
+      </cover-view>
     </cover-view>
-
-
-    <cover-view class='container-me'>
-      <!-- 点击头像进入用户详情页 -->
-      <!-- {{serverUrl}}{{publisher.faceImage}} 头像的图片先写死-->
-      <cover-image class="face" src='{{publisher.avatarurl}}' bindtap='showPublisher'></cover-image>
-
-      <!----点赞按钮 -->
-      <block wx:if="{{userClickvideo}}">
-        <cover-image class="size-me" src='../resource/images/点赞.png' style='margin-top:30rpx;' bindtap='ClickVideoOrNot'></cover-image>
-      </block>
-      <block wx:else>
-        <cover-image class="size-me" src='../resource/images/不点赞.png' style='margin-top:30rpx;' bindtap='ClickVideoOrNot'></cover-image>
-      </block>
-      <!-- 评论按钮 -->
-      <cover-image class="size-me" src='../resource/images/comments.png' style='margin-top:30rpx;' bindtap='leaveComment'></cover-image>
-
-      <!-- 收藏按钮 -->
-      <block wx:if="{{userLikevideo}}">
-        <cover-image class="size-me" src='../resource/images/like.png' style='margin-top:30rpx;' bindtap='LikeVideoOrNot'></cover-image>
-      </block>
-      <block wx:else>
-        <cover-image class="size-me" src='../resource/images/unlike.png' style='margin-top:30rpx;' bindtap='LikeVideoOrNot'></cover-image>
-      </block>
-
-
-    </cover-view>
-    <cover-view class='container1'>
-    <cover-view class='container-words'>
-      <cover-view>@{{publisher.nickname}}</cover-view>
-      <cover-view class='video-desc'>{{videoInfo.videoDesc}}</cover-view>
-      <cover-view class='video-topic' wx:if="{{videoInfo.topicName != null&& videoInfo.topicName != undefined && videoInfo.topicName != ''}}">主题:{{videoInfo.topicName}}</cover-view> 
-    </cover-view>
-
-
-    <cover-view class='container-reports'>
-      <!-- 举报按钮 -->
-      <cover-image class='' src='http://192.168.1.7:8081/image/reportaa.png' class="size-bottom" bindtap='report'></cover-image>
-
-    </cover-view>
-
-    </cover-view>
-   
-  
-    <cover-view class='container-bottom'>
-      <!-- 首页按钮 -->
-      <cover-image class='' src='../resource/images/index.png' class="size-bottom" bindtap='showIndex'></cover-image>
-
-
-
-      <!-- 我的按钮 -->
-      <cover-image class='' src='../resource/images/mine.png' class="size-bottom" bindtap='showMine'></cover-image>
-
-    </cover-view>
-
-</cover-view>
-    
-
   </video>
-
 </view>
 
 
-<view>
-
+<!-- <view>
   <view class="saySthView">
     <input name="commentContent" class="saySth" placeholder="{{placeholder}}" confirm-type="send" bindconfirm="saveComment" focus='{{commentFocus}}' value='{{contentValue}}' data-replyFatherCommentId='{{replyFatherCommentId}}' data-replyToUserId='{{replyToUserId}}'
     />
   </view>
-
   <block wx:for="{{commentsList}}" wx:key="{{commentsListId}}">
     <view class='comments-all' bindtap='replyFocus' data-fatherCommentId='{{item.id}}' data-toUserId='{{item.fromUserId}}' data-toNickname='{{item.nickname}}'>
       <view class='container-comments'>
@@ -93,7 +84,7 @@
           <label class='nickname-lbl'>@{{item.nickname}}</label>
           于
           <label class='date-lbl'>{{item.timeAgoStr}}</label>
-          <!-- 留言： -->
+        
           <block wx:if="{{item.toNickname != null}}">
             回复
             <label class='nickname-lbl'>@{{item.toNickname}}</label>
@@ -106,5 +97,4 @@
       <view class='comments-content'>{{item.comment}}</view>
     </view>
   </block>
-
-</view>
+</view>  -->

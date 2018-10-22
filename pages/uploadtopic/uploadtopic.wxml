@@ -2,24 +2,13 @@
 
   <form bindsubmit='formSubmit'>
 
-    <!-- <view class='container-reason'>
-            <label class='label'>举报理由:</label>
-            <picker name="reasonIndex" value="{{index}}" range="{{reportReasonArray}}" bindchange="changeMe">
-                <view class="picker">
-                    {{reasonType}}
-                </view>
-            </picker>
-        </view> -->
+
     <view class="container-reason">
       <label class='label1'>主题：</label>
       <input name="topicname" class="inputText" placeholder="请填写主题" />
     </view>
 
-    <!-- <view class='container-content'>
-            <label class='label'>举报描述（选填）:</label>
-            <textarea name="reasonContent" class='content' placeholder='请详细说明举报原因...'>
-            </textarea>
-        </view> -->
+
 
     <view class='container-content'>
       <label class='label'>主题描述:</label>
@@ -33,7 +22,7 @@
     </view>
 
     <view>
-      <!-- <button class="submitBtn" type="" form-type='submit'>提  交</button> -->
+
       <button class='submitBtn' type="" bindtap="uploadPhoto">选择封面</button>
       <button class="submitBtn" type="" form-type='submit'>提交</button>
     </view>

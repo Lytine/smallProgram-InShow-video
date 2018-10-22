@@ -15,9 +15,18 @@ Page({
     ATopicList: [],
     HTopicList: [],
     tabActive1: "null" ,
-    tabActive2: "null"
+    tabActive2: "null",
+    serverUrl: app.serverUrl
   },
-  onLoad: function(){
+  // onLoad: function(){
+  //   this.getTopic()
+  // },
+
+  onShow: function(){
+    this.data.Tpage=1;
+    this.data.Hpage = 1;
+    this.data.ATopicList= [];
+    this.data.HTopicList = [];
     this.getTopic()
   },
   btn1: function(){
@@ -153,4 +162,5 @@ Page({
     //   }
      }
   }
+ 
 })

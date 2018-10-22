@@ -73,7 +73,7 @@ Page({
 
     //请求个人简介
     wx.request({
-      url: serverUrl + '/user/query?userId=' + params.publisherId + "&loginId=" + that.data.userId,
+      url: serverUrl + '/user/query?userId=' + params.publisherId + "&loginId=" + userId,
       method: "POST",
       header: {
         'content-type': 'application/x-www-form-urlencoded' // 默认值

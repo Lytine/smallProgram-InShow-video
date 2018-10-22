@@ -29,13 +29,13 @@
         </view>
         <block wx:if="{{item.isFans}}">
         <view class='Follow'>
-        <image class="imgFollow" src='http://192.168.1.7:8081/image/相互关注.png' ></image>
+        <image class="imgFollow" src='../resource/images/相互关注.png' ></image>
         <text class='textFollow'>相互关注</text>
         </view>
         </block>
         <block wx:else>
         <view class='Follow'>
-        <image bindtap='addFollows' data-Id='{{item.user.id}}'  data-index='{{index}}' class="imgFollowtosmall" src='http://192.168.1.7:8081/image/加关注.png' ></image>
+        <image bindtap='addFollows' data-Id='{{item.user.id}}'  data-index='{{index}}' class="imgFollowtosmall" src='../resource/images/加关注.png' ></image>
         <text class='textFollow'>添加关注</text>
         </view>
         </block>

@@ -1,4 +1,9 @@
-<video id="myVideo" class="style-video" src="{{tmpVideoUrl}}" muted="{{true}}" controls="{{false}}" autoplay="{{true}}" loop="{{true}}" enable-progress-gesture="{{false}}" objectFit='{{cover}}'>
+<!-- class="style-video" -->
+<video id="myVideo" class="style-video" bindplay="myVplay" bindpause="myVpause" bindended="myVend" src="{{tmpVideoUrl}}" muted="true" controls="false" autoplay="false" enable-progress-gesture="false" show-center-play-btn="false" objectFit='cover'>
+  <cover-image class="cover-import" src="../resource/images/sure.png" style="width:128rpx;height:128rpx;" bindtap="sureVideo"></cover-image>
 </video>
 
-<cover-image class="cover-import" src="../resource/images/sure.png" style="width:64rpx;height:64rpx;" bindtap="sureVideo"></cover-image>
+<!-- {{serverUrl}}{{bgmSrc}} -->
+<!-- src='http://192.168.1.7:8081/bgm/Dura（抖音火热神曲）-Daddy Yankee_铃声之家cnwav.mp3' -->
+<audio id="myBgm" wx:if='{{!Hidden}}' controls action="{{audioAction}}" src='{{serverUrl}}{{bgmSrc}}' style='width:150rpx;text-align:center;' loop action="{{audioAction}}">
+</audio>

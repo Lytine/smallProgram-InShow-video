@@ -1,12 +1,31 @@
-/*视频描述样式 */ 
+/*视频描述样式 */
 
-page{
-  background-color: #fff0f5;
+.total {
+  background-color: #fefefe;
 }
-/* .total {
-  background-color: #fff0f5;
-} */
+.foder{
+   color: #808080;
+    font-size:13px;
+line-height:1.5;
+overflow:hidden;
+text-overflow:ellipsis;
+display:webkit-box;
+-webkit-box-orient:vertical;
+-webkit-line-clamp:1;
+width:50%;
+height:200rpx;
+/* border: solid 1px; */
+margin-left:20rpx;
 
+}
+.btn29
+{
+	width:143px;
+	height:43px;
+	line-height:18px;
+	font-size:18px;
+	color:#FFF;
+}
 container-total {
   display: flex;
   flex-direction: column;
@@ -20,7 +39,7 @@ container-total {
   align-items: flex-start;
   justify-content: flex-start;
   box-sizing: border-box;
-  /* margin-top: 20rpx; */
+  margin-top: 20rpx;
 }
 
 .container-left-list-out view {
@@ -31,7 +50,7 @@ container-total {
   /* text-overflow:ellipsis;  */
   overflow: hidden;
   /* white-space:nowrap;  */
-  /* margin-top: 10rpx; */
+  margin-top: 10rpx;
 }
 
 .container-left-list-in {
@@ -46,27 +65,49 @@ container-total {
 /* box-sizing:规定两个并排的边框 */
 
 .video-image {
-  flex: 0 0 32%;
-  box-sizing: border-box;
-  min-height: 300rpx;
+  flex:0 0 32%;
+box-sizing:border-box;
+min-height:30rpx;
+height:200rpx;
+/* border:solid 1px; */
+flex-direction: row;
+
 }
 
 .video-image image {
-  width: 313rpx;
+  /* width: 313rpx; */
+  width:50%;
+height:200rpx;
+background-color:#000000;
+
+}
+.image1{
+  width:100%;
+  height:200rpx;
+  flex-direction: row;
+  display: flex;
 }
 
 .textarea {
-  flex: 0 0 50%;
-  box-sizing: border-box;
-  margin-top: 10px;
-  padding: 10px;
-  width: 90%;
-  color: black;
-  background-color: #ffe4e1;
-  left: 4%;
-  right: 5%;
+flex:0 0 50%;
+box-sizing:border-box;
+margin-top:0px;
+padding:10px;
+width:100%;
+color:black;
+background-color:white;
+left:0%;
+right:5%;
+font-size:35rpx;
+/* border:solid 1px; */
+height:200rpx;
 }
-
+.line {
+    width: 100%;
+    height: 1px;
+    background-color: gainsboro;
+    margin-top: 1px;
+}
 /* 可选主题区域 */
 
 .page {
@@ -77,6 +118,7 @@ container-total {
   font-family: -apple-system-font, Helvetica Neue, Helvetica, sans-serif;
   overflow: hidden;
   margin-top: 10rpx;
+  background-color: #fefefe
 }
 
 .page__desc {
@@ -126,13 +168,12 @@ container-total {
   bottom: 0;
   width: 80%;
   border-radius: 98rpx; */
-  margin-top:40rpx; 
   color: black;
   background-color: #1aad19;
-  /* overflow:hidden;  */
-  /* position: fixed; */
-  /* bottom: 0; */
-  /* left:10%; */
+  overflow:hidden; 
+  position: fixed;
+  bottom: 0;
+  left:10%;
   width: 80%;
 }
 
@@ -145,9 +186,10 @@ container-total {
 .suibian {
   box-sizing: border-box;
   color: white;
-  padding: 10px;
+  /* padding: 10px; */
   background-color: #f08080;
   padding-block-start: 10rpx;
+  margin-top: 2%;
 }
 
 .radio-group {
@@ -156,5 +198,78 @@ container-total {
   padding: 10px;
   width: 100%;
   color: black;
-  background-color: #ffe4e1;
+  /* background-color: #ffe4e1; */
+  height: 650rpx
+}
+
+
+.button {
+    background-color: #999;
+    background-image: -webkit-linear-gradient(hsla(0,0%,100%,.05), hsla(0,0%,0%,.1));
+    background-image:    -moz-linear-gradient(hsla(0,0%,100%,.05), hsla(0,0%,0%,.1));
+    background-image:     -ms-linear-gradient(hsla(0,0%,100%,.05), hsla(0,0%,0%,.1));
+    background-image:      -o-linear-gradient(hsla(0,0%,100%,.05), hsla(0,0%,0%,.1));
+    background-image:         linear-gradient(hsla(0,0%,100%,.05), hsla(0,0%,0%,.1));
+    border: none;
+    border-radius: .5em;
+    box-shadow: inset 0 0 0 1px hsla(0,0%,0%,.2),
+                inset 0 2px 0 hsla(0,0%,100%,.1),
+                inset 0 1.2em 0 hsla(0,0%,100%,0.1),
+                inset 0 -.2em 0 hsla(0,0%,100%,.1),
+                inset 0 -.25em 0 hsla(0,0%,0%,.25),
+                0 .25em .25em hsla(0,0%,0%,.05);
+    color: #444;
+    cursor: pointer;
+    display: inline-block;
+    font-family: sans-serif;
+    font-size: 1em;
+    font-weight: bold;
+    line-height: 1.5;
+    /* margin: 0 .5em 1em; */
+    padding: .5em 1.5em .75em;
+    position: fixed;
+    text-decoration: none;
+    text-shadow: 0 1px 1px hsla(0,0%,100%,.25);
+    vertical-align: middle;
+    margin-left:60%;
+    
+}
+.regular {
+    border-radius: .5em;
+}
+.red {
+    background-color: #ff6c6f;
+
+}
+.pageA{
+  height: 100%;
+  
+}
+.topic{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+.container-bottom {
+    display:flex;
+/* margin-top:10%; */
+margin-left:20rpx;
+margin-right:50rpx;
+justify-content:space-between;
+
+}
+.container-bottom1 {
+    display:flex;
+margin-top:30rpx;
+
+justify-content:space-between;
+width:80rpx;
+height:70rpx;
+
+}
+.change{
+  margin-right:500rpx;
+ margin-top:50rpx;
+font-size:25rpx;
+
 }

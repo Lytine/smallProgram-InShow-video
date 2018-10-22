@@ -1,9 +1,8 @@
 var serverUrl = getApp().serverUrl;
-var userId = getApp().globalData.userId;
+//var userId = getApp().globalData.userId;
 
 Page({
   data: {
-
     poster: "http://p4.music.126.net/tUapZaR1iT5XTX2QcAc0DA==/96757023257715.jpg",
     /**轮播图 */
     imgUrls: [
@@ -22,6 +21,7 @@ Page({
     bgmList: [],
     totalPage: 1, //总页数
     page: 1, //当前页
+    bgmSrc: '',
   },
 
   /**搜索框跳转 */
@@ -45,7 +45,7 @@ Page({
     var me = this;
 
     me.setData({
-      playingBgm: e.currentTarget.id
+      playingBgm: e.currentTarget.id,
     })
 
     if (e.currentTarget.choose == 0)
@@ -80,6 +80,7 @@ Page({
 
   onLoad: function(params) {
     var that = this;
+    var userId = getApp().globalData.userId;
     //that.getMyBgmList(0); //  #搜索时用-10-19添加
     console.log("------------带进来的视频时长--------------" + params.duration)
     console.log("------------视频高度--------------" + params.tmpHeight)
@@ -90,6 +91,7 @@ Page({
 
     that.setData({
       videoParams: params,
+      userId: userId,
     });
 
     wx.showLoading({
@@ -175,13 +177,27 @@ Page({
 
     //TODO：点击上传按钮后得保证歌不是播放状态的————————bug暂存
     wx.getBackgroundAudioManager().stop();
-    //console.log("----视频的具体信息----------" + JSON.stringify(me.data.videoParams))
+    console.log("----视频的具体信息----------" + JSON.stringify(me.data.videoParams))
     var duration = me.data.videoParams.duration;
     var tmpVideoUrl = me.data.videoParams.tmpVideoUrl;
     var tmpCoverUrl = me.data.videoParams.tmpCoverUrl;
 
     var bgmId = me.data.itemId;
     console.log("bgmId:---------" + bgmId);
+    console.log(me.data)
+    var bgmList = me.data.bgmList;
+    var j = 0;
+    for (var i = 0; i < bgmList.length; i++) {
+      if (bgmList[i].id== me.data.itemId) {
+        j = i;
+      }
+    } 
+    console.log("打印id的下标值" + j)
+    console.log(me.data.bgmList[j].path);
+
+    var bgmSrc = me.data.bgmList[j].path;
+    var tmpWidth = me.data.videoParams.tmpWidth;
+    var tmpHeight = me.data.videoParams.tmpHeight;
 
     if (tmpWidth == undefined || tmpHeight == undefined) {
       //动态获取设备屏幕的高度
@@ -197,25 +213,25 @@ Page({
     } else { //如果是本地上传的话，高度和宽度就不会是undefined了，本来有值
       var tmpWidth = me.data.videoParams.tmpWidth;
       var tmpHeight = me.data.videoParams.tmpHeight;
+      console.log("-----------本地视频的赋值---------------传的高度和宽度")
+      console.log(tmpWidth)
+      console.log(tmpHeight)
+      console.log("------------本地视频的赋值---------------传的高度和宽度")
     }
 
     console.log("---------tmpWidth上传----------" + tmpWidth)
     console.log("---------tmpHeight---------" + tmpHeight)
     console.log("---------duration---------" + duration)
+
+
     wx.createAudioContext(me.data.playingBgm).pause();
     wx.navigateTo({
-      // url: '../publish/publish?duration=' + duration +
-      //   "&tmpHeight=" + tmpHeight +
-      //   "&tmpWidth=" + tmpWidth +
-      //   "&tmpVideoUrl=" + tmpVideoUrl +
-      //   "&tmpCoverUrl=" + tmpCoverUrl + 
-      //   "&audioId=" + bgmId
       url: '../vedioPreview/vedioPreview?duration=' + duration +
         "&tmpHeight=" + tmpHeight +
         "&tmpWidth=" + tmpWidth +
         "&tmpVideoUrl=" + tmpVideoUrl +
         "&tmpCoverUrl=" + tmpCoverUrl +
-        "&audioId=" + bgmId
+        "&audioId=" + bgmId + "&bgmSrc=" + bgmSrc
     })
   },
 
@@ -240,7 +256,6 @@ Page({
       })
       me.getAllMyBgmList(page); //再传入需要分页的页数
     }
-
   },
 
 
